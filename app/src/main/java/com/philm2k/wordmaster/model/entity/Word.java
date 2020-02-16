@@ -1,4 +1,4 @@
-package com.philm2k.wordmaster.model.dao;
+package com.philm2k.wordmaster.model.entity;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
