@@ -1,24 +1,19 @@
 package com.philm2k.wordmaster.model.entity;
 
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-import static androidx.room.ForeignKey.CASCADE;
-
-@Entity(tableName = "usage_table",foreignKeys = @ForeignKey ( entity = Word.class,
-        parentColumns = "id", childColumns = "word_id", onDelete = CASCADE))
-
+@Entity(tableName = "usage_table")
 public class Usage {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    public int id;
     private String english_statement;
     private String korean_translation;
     private Long timestamp;
-    private int word_id;
+    public int word_id;
 
     public Usage(String english_statement, String korean_translation, int word_id) {
         this.english_statement = english_statement;

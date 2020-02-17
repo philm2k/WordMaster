@@ -1,19 +1,25 @@
 package com.philm2k.wordmaster.model.entity;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+
+import java.util.List;
 
 @Entity(tableName = "word_table")
 public class Word {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    public int id;
     private String word;
     private String meaning;
     private boolean first;
     private boolean second;
     private boolean third;
     private boolean fourth;
+
+    @Ignore
+    public List<Usage> usages;
 
     public Word(String word, String meaning) {
         this.word = word;

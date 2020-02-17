@@ -1,4 +1,4 @@
-package com.philm2k.wordmaster.view.home;
+package com.philm2k.wordmaster.view.word;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.philm2k.wordmaster.R;
 
-public class HomeFragment extends Fragment {
+public class WordFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+    private WordViewModel wordViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of ( this ).get ( HomeViewModel.class );
+        wordViewModel =
+                ViewModelProviders.of ( this ).get ( WordViewModel.class );
         View root = inflater.inflate ( R.layout.fragment_home, container, false );
         final TextView textView = root.findViewById ( R.id.text_home );
-        homeViewModel.getText ().observe ( this, new Observer<String> () {
+        wordViewModel.getText ().observe ( this, new Observer<String> () {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText ( s );
