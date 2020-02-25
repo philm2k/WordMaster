@@ -3,8 +3,6 @@ package com.philm2k.wordmaster.model.entity;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
-
 @Entity(tableName = "usage_table")
 public class Usage {
 
@@ -12,13 +10,11 @@ public class Usage {
     public int id;
     private String english_statement;
     private String korean_translation;
-    private Long timestamp;
     public int word_id;
 
     public Usage(String english_statement, String korean_translation, int word_id) {
         this.english_statement = english_statement;
         this.korean_translation = korean_translation;
-        this.timestamp = System.currentTimeMillis ();
         this.word_id = word_id;
     }
 
@@ -46,14 +42,6 @@ public class Usage {
         this.korean_translation = korean_translation;
     }
 
-    public Long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Long timestamp) {
-        this.timestamp = timestamp;
-    }
-
     public int getWord_id() {
         return word_id;
     }
@@ -68,7 +56,6 @@ public class Usage {
                 "id=" + id +
                 ", english_statement='" + english_statement + '\'' +
                 ", korean_translation='" + korean_translation + '\'' +
-                ", timestamp=" + new Date (timestamp).toString () +
                 ", word_id=" + word_id +
                 '}';
     }

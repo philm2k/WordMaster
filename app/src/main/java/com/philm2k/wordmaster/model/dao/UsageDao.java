@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -14,10 +15,16 @@ import java.util.List;
 @Dao
 public interface UsageDao {
 
-    @Insert
+    @Query("SELECT * FROM usage_table WHERE id = :id LIMIT 1")
+    Usage getUsageById(int id);
+
+    @Query("SELECT * FROM usage_table WHERE english_statement LIKE :usage LIMIT 1")
+    Usage getUsageByEStmt(String usage);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insert(Usage usage);
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     int update(Usage usage);
 
     @Delete

@@ -6,51 +6,43 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.philm2k.wordmaster.model.entity.Usage;
 import com.philm2k.wordmaster.model.entity.Word;
-import com.philm2k.wordmaster.model.entity.WordWithUsages;
-import com.philm2k.wordmaster.model.repository.WordMasterRepository;
+import com.philm2k.wordmaster.model.repository.WordRepository;
 
 import java.util.List;
 
 public class WordViewModel extends AndroidViewModel {
 
-    private WordMasterRepository repository;
+    private WordRepository repository;
+    private LiveData<List<Word>> allWords;
 
     public WordViewModel(@NonNull Application application) {
         super (application);
-        repository = new WordMasterRepository (application);
+        repository = new WordRepository(application);
+        allWords = repository.getAllWords();
     }
 
-    public void insertWord(Word word){
+    public void insert(Word word){
         repository.insertWord ( word );
     }
 
-    public void updateWord(Word word){
+    public void update(Word word){
         repository.updateWord ( word );
     }
 
-    public void deleteWord(Word word){
+    public void delete(Word word){
         repository.deleteWord ( word );
     }
 
+    public Word getWordById(int id){
+        return repository.getWordById(id);
+    }
+
+    public Word getWordByWord(String query){
+        return repository.getWordByWord(query);
+    }
+
     public LiveData<List<Word>> getAllWords(){
-        return repository.getAllWords ();
-    }
-
-    public LiveData<List<WordWithUsages>> getAllWordsAndUsages(){
-        return repository.getAllWordsAndUsages ();
-    }
-
-    public void insertUsage(Usage usage) {
-        repository.insertUsage ( usage );
-    }
-
-    public void updateUsage(Usage usage) {
-        repository.updateUsage ( usage );
-    }
-
-    public void deleteUsage(Usage usage) {
-        repository.deleteUsage ( usage );
+        return allWords;
     }
 }

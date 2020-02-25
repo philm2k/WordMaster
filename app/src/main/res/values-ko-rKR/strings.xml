@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">단어장</string>
+    <string name="title_word">단어</string>
+    <string name="title_dashboard">대시보드</string>
+    <string name="title_notifications">알림</string>
+    <string name="string_word">단어</string>
+    <string name="string_meaning">의미</string>
+    <string name="hint_search">찾는 단어 입력</string>
+</resources>

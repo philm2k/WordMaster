@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="word"
+            type="com.philm2k.wordmaster.model.entity.Word" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txt_word"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:hint="@string/string_word"
+                android:text="@{word.word}"/>
+            <TextView
+                android:id="@+id/txt_meaning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_below="@+id/txt_word"
+                android:hint="@string/string_meaning"
+                android:text="@{word.meaning}"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

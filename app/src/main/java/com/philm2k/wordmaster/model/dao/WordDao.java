@@ -4,21 +4,27 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-import androidx.room.Transaction;
 import androidx.room.Update;
 
 import com.philm2k.wordmaster.model.entity.Word;
-import com.philm2k.wordmaster.model.entity.WordWithUsages;
 
 import java.util.List;
 
 @Dao
 public interface WordDao {
-    @Insert
+
+    @Query("SELECT * FROM word_table WHERE id = :id LIMIT 1")
+    Word getWordByWord(int id);
+
+    @Query("SELECT * FROM word_table WHERE word = :word LIMIT 1")
+    Word getWordByWord(String word);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insert(Word word);
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     int update(Word word);
 
     @Query("DELETE FROM word_table")
@@ -30,7 +36,4 @@ public interface WordDao {
     @Query("SELECT * from word_table ORDER BY word ASC")
     LiveData<List<Word>> getAll();
 
-    @Transaction
-    @Query("SELECT * from word_table ORDER BY word ASC")
-    LiveData<List<WordWithUsages>> getAllWithUsages();
 }
