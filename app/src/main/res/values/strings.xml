@@ -9,4 +9,7 @@
     <string name="string_word">Word</string>
     <string name="string_meaning">Meaning</string>
     <string name="hint_search">Input search string</string>
+    <string name="string_enstmt">English Statement</string>
+    <string name="string_kortran">Korean Translation</string>
+    <string name="add_word">Add Word</string>
 </resources>

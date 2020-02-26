@@ -26,7 +26,9 @@ public class UsageRepository {
         return allUsages;
     }
 
-
+    public LiveData<List<Usage>> findUsagesForWord(int id){
+        return usageDao.findUsagesForWord(id);
+    }
 
     public Usage getUsageById(int id){
         try {
