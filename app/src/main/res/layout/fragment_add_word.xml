@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="word"
             type="com.philm2k.wordmaster.model.entity.Word" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".view.word.AddWordFragment">
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,7 +27,7 @@
                 android:layout_margin="4dp"
                 android:orientation="vertical">
                 <EditText
-                    android:id="@+id/txt_word"
+                    android:id="@+id/edit_word"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -35,10 +36,10 @@
                     android:text="@{word.word}"
                     android:inputType="text" />
                 <EditText
-                    android:id="@+id/txt_meaning"
+                    android:id="@+id/edit_meaning"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_word"
+                    android:layout_below="@+id/edit_word"
                     android:hint="@string/string_meaning"
                     android:text="@{word.meaning}"
                     android:inputType="textImeMultiLine" />
@@ -46,11 +47,37 @@
                     android:id="@+id/btn_add_word"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_meaning"
+                    android:layout_below="@+id/edit_meaning"
+                    android:layout_alignParentEnd="true"
                     android:gravity="center_horizontal|center_vertical"
                     android:text="@string/add_word"
                     android:layout_marginEnd="0dp"/>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <Button
+                android:id="@+id/btn_add_usage_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/add_usage_layout"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/lLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

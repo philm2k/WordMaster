@@ -10,4 +10,8 @@
     <string name="string_enstmt">영어 예문</string>
     <string name="string_kortran">우리말 번역</string>
     <string name="add_word">단어 추가</string>
+    <string name="edit_word">단어 편집</string>
+    <string name="add_usage_layout">예문입력양식 추가</string>
+    <string name="add_usage">예문 추가</string>
+    <string name="label_usage">예문:</string>
 </resources>

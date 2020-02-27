@@ -53,8 +53,16 @@ public abstract class WordMasterDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             AddWords();
+            AddUsages();
             return null;
         }
+
+        private void AddUsages() {
+            for(int i=1; i < 300; i ++){
+                usageDao.insert(new Usage("","",i));
+            }
+        }
+
         void AddWords(){
             //Word Insert
             wordDao.insert ( new Word ("abbreviate","축약하다, 단축하다"));

@@ -132,7 +132,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.CustomViewHold
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Word term);
+        void onItemClick(Word word);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

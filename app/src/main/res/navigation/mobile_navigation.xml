@@ -16,6 +16,15 @@
         <action
             android:id="@+id/action_navigation_word_to_navigation_edit_word"
             app:destination="@id/navigation_edit_word" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="word"
+            app:argType="string" />
+        <argument
+            android:name="meaning"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/navigation_add_word"
@@ -38,5 +47,14 @@
         android:id="@+id/navigation_edit_word"
         android:name="com.philm2k.wordmaster.view.word.EditWordFragment"
         android:label="fragment_edit_word"
-        tools:layout="@layout/fragment_edit_word" />
+        tools:layout="@layout/fragment_edit_word" >
+        <action
+            android:id="@+id/action_navigation_edit_word_to_navigation_edit_usage"
+            app:destination="@id/navigation_edit_usage" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_edit_usage"
+        android:name="com.philm2k.wordmaster.view.word.usage.EditUsageFragment"
+        android:label="fragment_edit_usage"
+        tools:layout="@layout/fragment_edit_usage" />
 </navigation>

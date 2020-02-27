@@ -23,22 +23,22 @@
                 android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:hint="@string/string_word"
-                android:text="@{word.word}"/>
+                android:text="@={word.word}"/>
             <EditText
                 android:id="@+id/edit_meaning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/edit_word"
                 android:hint="@string/string_meaning"
-                android:text="@{word.meaning}"/>
+                android:text="@={word.meaning}"/>
             <Button
-                android:id="@+id/btn_edit_word"
+                android:id="@+id/btn_add_word"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/edit_meaning"
                 android:layout_alignParentEnd="true"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="@string/edit_word"/>
+                android:text="@string/add_word"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </layout>

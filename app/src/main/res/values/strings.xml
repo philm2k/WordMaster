@@ -12,4 +12,8 @@
     <string name="string_enstmt">English Statement</string>
     <string name="string_kortran">Korean Translation</string>
     <string name="add_word">Add Word</string>
+    <string name="edit_word">Edit Word</string>
+    <string name="add_usage_layout">Add Usage Layout</string>
+    <string name="add_usage">Add Usage</string>
+    <string name="label_usage">Uages:</string>
 </resources>

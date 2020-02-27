@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.view.MenuItemCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -73,9 +74,12 @@ public class WordFragment extends Fragment implements SearchView.OnQueryTextList
          */
         adapter.setOnItemClickListener ( word -> {
             Bundle args = new Bundle();
+
             args.putInt ( "id", word.getId() );
-            args.putString("term", word.getWord());
-            args.putString("description", word.getMeaning());
+            args.putString("word", word.getWord());
+            args.putString("meaning", word.getMeaning());
+
+            // Toast.makeText(getContext(), word.getWord(),Toast.LENGTH_LONG).show();
 
             Navigation.findNavController(root).navigate(R.id.action_navigation_word_to_navigation_edit_word,args);
         } );
@@ -90,7 +94,7 @@ public class WordFragment extends Fragment implements SearchView.OnQueryTextList
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate ( R.menu.word_menu, menu );
         MenuItem searchItem = menu.findItem(R.id.action_word_search);
-        SearchView searchView = (SearchView)searchItem.getActionView ();
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setOnQueryTextListener ( this );
         super.onCreateOptionsMenu(menu, inflater);
     }
