@@ -65,7 +65,6 @@ public abstract class WordMasterDatabase extends RoomDatabase {
 
         void AddWords(){
             //Word Insert
-            wordDao.insert ( new Word ("abbreviate","축약하다, 단축하다"));
             wordDao.insert ( new Word ("accommodate","수용하다"));
             wordDao.insert ( new Word ("accuse A of B","B를 이유로 A를 고발하다"));
             wordDao.insert ( new Word ("acquaint","익히다, 숙지하다"));

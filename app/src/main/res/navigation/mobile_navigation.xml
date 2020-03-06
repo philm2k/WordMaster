@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_word">
+    app:startDestination="@+id/navigation_home">
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.philm2k.wordmaster.view.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_word"
+            app:destination="@id/navigation_word" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_word"
         android:name="com.philm2k.wordmaster.view.word.WordFragment"
         android:label="@string/title_word"
         tools:layout="@layout/fragment_word" >
-        <action
-            android:id="@+id/action_navigation_word_to_navigation_add_word"
-            app:destination="@id/navigation_add_word" />
-        <action
-            android:id="@+id/action_navigation_word_to_navigation_edit_word"
-            app:destination="@id/navigation_edit_word" />
         <argument
             android:name="id"
             app:argType="integer" />
@@ -25,12 +29,17 @@
         <argument
             android:name="meaning"
             app:argType="string" />
+        <action
+            android:id="@+id/action_navigation_word_to_navigation_word_detail"
+            app:destination="@id/navigation_word_detail" />
+        <action
+            android:id="@+id/action_navigation_word_to_navigation_add_word_dialog"
+            app:destination="@id/navigation_add_word_dialog" />
     </fragment>
     <fragment
-        android:id="@+id/navigation_add_word"
-        android:name="com.philm2k.wordmaster.view.word.AddWordFragment"
-        android:label="@string/title_word"
-        tools:layout="@layout/fragment_add_word" />
+        android:id="@+id/navigation_add_word_dialog"
+        android:name="com.philm2k.wordmaster.view.word.AddWordDialogFragment"
+        android:label="@string/title_add_word"/>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -44,17 +53,33 @@
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
-        android:id="@+id/navigation_edit_word"
-        android:name="com.philm2k.wordmaster.view.word.EditWordFragment"
-        android:label="fragment_edit_word"
-        tools:layout="@layout/fragment_edit_word" >
+        android:id="@+id/navigation_edit_usage_dialog"
+        android:name="com.philm2k.wordmaster.view.usage.EditUsageDialogFragment"
+        android:label="@string/title_edit_usage"
+        tools:layout="@layout/fragment_edit_usage_dialog" />
+    <fragment
+        android:id="@+id/navigation_word_detail"
+        android:name="com.philm2k.wordmaster.view.word.DetailWordFragment"
+        android:label="@string/title_word_detail">
+        <argument
+            android:name="wid"
+            app:argType="integer" />
+        <argument
+            android:name="engstmt"
+            app:argType="string" />
+        <argument
+            android:name="kortran"
+            app:argType="string" />
         <action
-            android:id="@+id/action_navigation_edit_word_to_navigation_edit_usage"
-            app:destination="@id/navigation_edit_usage" />
+            android:id="@+id/action_navigation_word_detail_to_navigation_add_usage_dialog"
+            app:destination="@id/navigation_add_usage_dialog" />
+        <action
+            android:id="@+id/action_navigation_word_detail_to_navigation_edit_usage_dialog"
+            app:destination="@id/navigation_edit_usage_dialog" />
     </fragment>
     <fragment
-        android:id="@+id/navigation_edit_usage"
-        android:name="com.philm2k.wordmaster.view.word.usage.EditUsageFragment"
-        android:label="fragment_edit_usage"
-        tools:layout="@layout/fragment_edit_usage" />
+        android:id="@+id/navigation_add_usage_dialog"
+        android:name="com.philm2k.wordmaster.view.usage.AddUsageDialogFragment"
+        android:label="@string/title_add_usage"
+        tools:layout="@layout/fragment_add_usage_dialog" />
 </navigation>

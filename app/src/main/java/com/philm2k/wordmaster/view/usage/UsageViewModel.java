@@ -1,4 +1,4 @@
-package com.philm2k.wordmaster.view.word.usage;
+package com.philm2k.wordmaster.view.usage;
 
 import android.app.Application;
 
@@ -14,12 +14,12 @@ import java.util.List;
 public class UsageViewModel  extends AndroidViewModel {
 
     private UsageRepository repository;
-    private LiveData<List<Usage>> allWords;
+    private LiveData<List<Usage>> allUsages;
 
     public UsageViewModel(@NonNull Application application) {
         super (application);
         repository = new UsageRepository(application);
-        allWords = repository.getAllUsages();
+        allUsages = repository.getAllUsages();
     }
 
     public void insert(Usage usage){
@@ -34,16 +34,16 @@ public class UsageViewModel  extends AndroidViewModel {
         repository.deleteUsage ( usage );
     }
 
-    public Usage getWordById(int id){
+    public Usage getUsageById(int id){
         return repository.getUsageById(id);
     }
 
-    public Usage getWordByWord(String query){
+    public Usage getUsageByWord(String query){
         return repository.getUsageByWord(query);
     }
 
-    public LiveData<List<Usage>> getAllWords(){
-        return allWords;
+    public LiveData<List<Usage>> getAllUsages(){
+        return allUsages;
     }
 
 

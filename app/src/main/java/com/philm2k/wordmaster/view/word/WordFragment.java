@@ -39,22 +39,19 @@ public class WordFragment extends Fragment implements SearchView.OnQueryTextList
 
         binding = DataBindingUtil.inflate (inflater, R.layout.fragment_word, container, false );
 
-        View root = binding.getRoot();
-
         setHasOptionsMenu ( true );
 
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(root.getContext());
-
-        RecyclerView recyclerView = binding.rvWord;
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setHasFixedSize ( true );
-
-        adapter = new WordAdapter();
-        recyclerView.setAdapter(adapter);
+        RecyclerView recyclerView = InitRecyclerView();
 
         viewModel = new ViewModelProvider( this ).get ( WordViewModel.class );
+        binding.setViewmodel(viewModel);
+        binding.setLifecycleOwner(this);
+
         viewModel.getAllWords().observe(getViewLifecycleOwner(), words -> adapter.setWords(words));
 
+        /**
+         * ToDo: 아래 기능을 개선해 보자(1. 스와핑하면 다른 테이블(?)에 저장해 놓고, 전체목록 보여줄 때 뺀다. 2. 뺀 목록만 뺀시기를 고려해 따로 보여준다
+         */
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback (0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
@@ -65,29 +62,36 @@ public class WordFragment extends Fragment implements SearchView.OnQueryTextList
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 viewModel.delete ( adapter.getWordAt ( viewHolder.getAdapterPosition () ) );
-                Toast.makeText ( getContext (), "Term deleted", Toast.LENGTH_SHORT ).show ();
+                Toast.makeText ( getContext (), R.string.deleted_word, Toast.LENGTH_SHORT ).show ();
             }
         } ).attachToRecyclerView ( recyclerView );
 
         /**
          * 손가락이나 펜으로 RecyclerView 항목을 터치했을 때 편집 실행
          */
-        adapter.setOnItemClickListener ( word -> {
+        adapter.setOnItemClickListener (word -> {
             Bundle args = new Bundle();
 
-            args.putInt ( "id", word.getId() );
+            args.putInt("id", word.getId());
             args.putString("word", word.getWord());
             args.putString("meaning", word.getMeaning());
 
             // Toast.makeText(getContext(), word.getWord(),Toast.LENGTH_LONG).show();
+            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_navigation_word_to_navigation_word_detail, args);
+        });
 
-            Navigation.findNavController(root).navigate(R.id.action_navigation_word_to_navigation_edit_word,args);
-        } );
+        return binding.getRoot();
+    }
 
-        root.findViewById ( R.id.fab_add_word ).setOnClickListener ( v ->
-                Navigation.findNavController(root).navigate(R.id.action_navigation_word_to_navigation_add_word) );
+    private RecyclerView InitRecyclerView() {
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(binding.getRoot().getContext());
+        RecyclerView recyclerView = binding.rvWord;
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setHasFixedSize ( true );
 
-        return root;
+        adapter = new WordAdapter();
+        recyclerView.setAdapter(adapter);
+        return recyclerView;
     }
 
     @Override
@@ -108,5 +112,15 @@ public class WordFragment extends Fragment implements SearchView.OnQueryTextList
     public boolean onQueryTextChange(String newText) {
         adapter.getFilter().filter(newText);
         return false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.action_add_word){
+            //Navigation.findNavController(binding.getRoot()).navigate(R.id.action_navigation_word_to_navigation_add_word);
+            AddWordDialogFragment dialog = new AddWordDialogFragment();
+            dialog.show(getChildFragmentManager(), "Hello");
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

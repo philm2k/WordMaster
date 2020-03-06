@@ -18,7 +18,8 @@ public class WordRepository {
     public WordRepository(Application application){
         WordMasterDatabase db = WordMasterDatabase.getInstance(application);
         wordDao = db.wordDao ();
-        allWords = wordDao.getAll ();
+        //allWords = wordDao.getAll ();   // 내림차순 정렬 by word
+        allWords = wordDao.getRandomAll ();  // Random 정렬
     }
 
     public LiveData<List<Word>> getAllWords(){

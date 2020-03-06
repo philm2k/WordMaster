@@ -1,4 +1,4 @@
-package com.philm2k.wordmaster.view.word.usage;
+package com.philm2k.wordmaster.view.usage;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

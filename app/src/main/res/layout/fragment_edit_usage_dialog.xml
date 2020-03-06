@@ -16,11 +16,21 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:orientation="vertical">
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textStyle="bold"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/title_edit_usage"
+                android:textColor="@android:color/white"/>
             <EditText
                 android:id="@+id/edit_engstmt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_below="@+id/txt_title"
                 android:hint="@string/string_enstmt"
                 android:text="@{usage.english_statement}"/>
             <EditText
@@ -31,15 +41,19 @@
                 android:layout_below="@+id/edit_engstmt"
                 android:hint="@string/string_kortran"
                 android:text="@{usage.korean_translation}"/>
+
             <Button
-                android:id="@+id/btn_add_usage"
+                android:id="@+id/btn_edit_usage"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_below="@+id/edit_korTran"
                 android:layout_alignParentEnd="true"
+                android:layout_marginEnd="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@android:color/white"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="@string/add_usage"
-                android:layout_marginEnd="0dp"/>
+                android:text="@string/edit_usage"
+                android:textSize="13sp"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </layout>

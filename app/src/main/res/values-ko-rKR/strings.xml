@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">단어장</string>
+    <!-- 화면 제목 -->
     <string name="title_word">단어</string>
     <string name="title_dashboard">대시보드</string>
     <string name="title_notifications">알림</string>
+    <string name="title_add_word">단어 추가</string>
+    <string name="title_word_detail">단어 상세</string>
+    <string name="title_edit_word">단어 편집</string>
+    <string name="title_add_usage">예문 추가</string>
+    <string name="title_edit_usage">예문 편집</string>
+
+    <!-- 단어 -->
     <string name="string_word">단어</string>
     <string name="string_meaning">의미</string>
-    <string name="hint_search">찾는 단어 입력</string>
-    <string name="string_enstmt">영어 예문</string>
-    <string name="string_kortran">우리말 번역</string>
     <string name="add_word">단어 추가</string>
     <string name="edit_word">단어 편집</string>
-    <string name="add_usage_layout">예문입력양식 추가</string>
+    <string name="deleted_word">단어 삭제됨</string>
+    <string name="hint_word_search">찾는 단어 입력</string>
+    <string name="empty_word">단어 또는 의미가 누락되었음</string>
+
+    <!-- 예문 -->
+    <string name="string_enstmt">영어 예문</string>
+    <string name="string_kortran">우리말 번역</string>
     <string name="add_usage">예문 추가</string>
-    <string name="label_usage">예문:</string>
+    <string name="edit_usage">예문 편집</string>
+    <string name="label_usage">예문: (우상단 +를 클릭하여 예문을 추가하십시오!!!)</string>
+    <string name="string_wordid">ID</string>
+    <string name="deleted_usage">예문 삭제됨</string>
+    <string name="empty_usage">예문의 내용이 누락됨</string>
+    <string name="add_usage_layout">예문입력양식 추가</string>
+
+    <!-- 기타 -->
+    <string name="hello_blank_fragment">안녕빈화면</string>
+    <string name="title_home">홈</string>
 </resources>

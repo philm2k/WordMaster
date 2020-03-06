@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="word"
+            type="com.philm2k.wordmaster.model.entity.Word" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/edit_word"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:hint="@string/string_word"
+                android:text="@{word.word}"/>
+            <EditText
+                android:id="@+id/edit_meaning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_word"
+                android:hint="@string/string_meaning"
+                android:text="@{word.meaning}"/>
+            <Button
+                android:id="@+id/btn_edit_word"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_meaning"
+                android:background="@android:color/holo_red_dark"
+                android:textColor="@android:color/white"
+                android:layout_alignParentEnd="true"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/edit_word"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
