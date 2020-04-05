@@ -49,9 +49,6 @@ public class WordFragment extends Fragment implements SearchView.OnQueryTextList
 
         viewModel.getAllWords().observe(getViewLifecycleOwner(), words -> adapter.setWords(words));
 
-        /**
-         * ToDo: 아래 기능을 개선해 보자(1. 스와핑하면 다른 테이블(?)에 저장해 놓고, 전체목록 보여줄 때 뺀다. 2. 뺀 목록만 뺀시기를 고려해 따로 보여준다
-         */
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback (0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
