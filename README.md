@@ -8,8 +8,7 @@
 
 ## Used Skill(not perfect, I'm studying ^^)
 - MVVM(Model-View-ViewModel)
-- Room Database
+- Room Database with SearchView
 - Data Binding
-- SearchView
 - etc
  
